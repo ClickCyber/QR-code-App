@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>QR code Gennarte</title>
+    <link rel="stylesheet" href="https://www.bootstrapdash.com/demo/purple-admin-free/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://www.bootstrapdash.com/demo/purple-admin-free/assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="https://www.bootstrapdash.com/demo/purple-admin-free/assets/css/style.css">
+    <link rel="shortcut icon" href="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/favicon.ico" />
+	<style>
+		
+	</style>
+  </head>
+  <body>
+  
+	{% if qr_code%}
+			<style>
+		.button {
+		  border-radius: 4px;
+		  background-color: lightblue;
+		  border: none;
+		  color: #FFFFFF;
+		  text-align: center;
+		  font-size: 28px;
+		  padding: 20px;
+		  width: 200px;
+		  transition: all 0.5s;
+		  cursor: pointer;
+		  margin: 5px;
+		}
+
+		.button span {
+		  cursor: pointer;
+		  display: inline-block;
+		  position: relative;
+		  transition: 0.5s;
+		}
+
+		.button span:after {
+		  content: '\00bb';
+		  position: absolute;
+		  opacity: 0;
+		  top: 0;
+		  right: -20px;
+		  transition: 0.5s;
+		}
+
+		.button:hover span {
+		  padding-right: 25px;
+		}
+
+		.button:hover span:after {
+		  opacity: 1;
+		  right: 0;
+		}
+		</style>
+	<div class="container-scroller">
+		  <div class="container-fluid page-body-wrapper full-page-wrapper">
+			<div class="content-wrapper d-flex align-items-center auth">
+			  <div class="row flex-grow">
+				<div class="col-lg-4 mx-auto">
+				  <div class="auth-form-light text-left p-5">
+					<h1> Your Code a Connedted a Link </h1>
+					<br>
+					<a href={{qr_link}} style="text-align:center;"> <p> {{qr_link}} </p> </a>
+					<img src={{qr_code}} alt="report probleam @appel420" class="img-thumbnail" style="border: 5px solid; border-radius:50px; border-color:lightblue;" id="auto-color"/>
+					  <div class="mt-3">
+					  
+						<a class="btn btn-block btn-gradient-info btn-lg font-weight-medium auth-form-btn" href="/">Create New Code</a>
+						<a class="btn btn-block btn-gradient-warning btn-lg font-weight-medium auth-form-btn" href={{qr_code}} download>Download QR</a>
+						<a class="btn btn-block btn-gradient-dark btn-lg font-weight-medium auth-form-btn"  href="https://github.com/ClickCyber/QR-code-App"'>source code</a>
+						</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  <script>
+			const color = ['#800000','#8B0000','#A52A2A','#B22222','#DC143C','#FF0000','#FF6347','#FF7F50','#00FF00','#32CD32','#90EE90','#98FB98','#00FA9A','#00FF7F','#2E8B57'];
+			setInterval(function(){
+			document.getElementById('auto-color').style = "border: 5px solid; border-radius:50px; border-color:" + color[Math.floor(Math.random() * color.length)]; + ";";
+			}, 1000);
+		</script>
+	{% else %}
+		<div class="container-scroller">
+		  <div class="container-fluid page-body-wrapper full-page-wrapper">
+			<div class="content-wrapper d-flex align-items-center auth">
+			  <div class="row flex-grow">
+				<div class="col-lg-4 mx-auto">
+				  <div class="auth-form-light text-left p-5">
+					<div class="brand-logo">
+						<img src="https://www.arihantwebtech.com/images/design-notice/banner-design.png" style="margin-left:40px"/>            
+					</div>
+					<div style="border:5px dashed;text-align:center; border-color: #FF0000 #00FF00 #0000FF #000000; background-color:#00FFFF;font-weight: 900;">
+					<h3 id='auto-color'> Welcome To generate Code </h3>
+					<hr>
+					<p> Generates a QR code from a link to an image </p>
+					</div>
+					<form action='setup-QR' method="POST" class="pt-3">
+					  <div class="form-group">
+						<input type="text" name="link" class="form-control form-control-lg" placeholder="insert url" required>
+					  </div>
+					  <div class="form-group">
+						<select name="color" class="form-control form-control-lg" required>
+						<option value="" disabled selected>Selecet Color</option>
+							<option value="red" style="color:red; background-color:black;">red</option>
+							<option value="blue" style="color:blue;background-color:black;">blue</option>
+							<option value="yellow" style="color:yellow;background-color:black;">yellow</option>
+							<option value="green" style="color:green;background-color:black;">green</option>
+							<option value="orange" style="color:orange;background-color:black;">orange</option>
+							<option value="white" style="color:lightblue;background-color:black;">white</option>
+							
+						</select>
+					  </div>
+					  <div class="mt-3">
+						<button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" type="submit">generate QR</button>
+					  </div>
+					</form>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<!-- content-wrapper ends -->
+		  </div>
+		  <!-- page-body-wrapper ends -->
+		</div>
+		<!-- container-scroller -->
+		<!-- plugins:js -->
+		<script>
+		const color = ['#800000','#8B0000','#A52A2A','#B22222','#DC143C','#FF0000','#FF6347','#FF7F50','#00FF00','#32CD32','#90EE90','#98FB98','#00FA9A','#00FF7F','#2E8B57'];
+		setInterval(function(){
+		document.getElementById('auto-color').style.color = color[Math.floor(Math.random() * color.length)];
+		}, 1000);
+		</script>
+		{% endif %}
+	
+    <script src="https://www.bootstrapdash.com/demo/purple-admin-free/assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="https://www.bootstrapdash.com/demo/purple-admin-free/assets/js/off-canvas.js"></script>
+    <script src="https://www.bootstrapdash.com/demo/purple-admin-free/assets/vendors/js/hoverable-collapse.js"></script>
+    <script src="https://www.bootstrapdash.com/demo/purple-admin-free/assets/vendors/js/misc.js"></script>
+    <!-- endinject -->
+  </body>
+</html>
